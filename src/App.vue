@@ -13,7 +13,11 @@
           <!-- message -->
           <Message v-if="message" :message="message" />
           <!-- new note -->
-          <NewNote :note="note" @addNote="addNote" />
+          <NewNote
+            :note="note"
+            :colorPalette="colorPalette"
+            @addNote="addNote"
+          />
           <div class="note-header" style="margin: 36px 0">
             <!-- title -->
             <h1>{{ title }}</h1>
@@ -92,24 +96,38 @@ export default {
       search: '',
       message: null,
       grid: true,
+      colorPalette: [
+        '#ffffff',
+        '#C6E6AC',
+        '#DFF8EB',
+        '#FFA400',
+        '#B59DA4',
+        '#FFA8A9'
+      ],
       note: {
         title: '',
-        descr: ''
+        descr: '',
+        color: '#fff',
+        isImportant: false,
+        isDone: false
       },
       notes: [
         {
           title: 'First Note',
           descr: 'Description for first note',
+          color: 'red',
           date: new Date(Date.now()).toLocaleString()
         },
         {
           title: 'Second Note',
           descr: 'Description for second note',
+          color: 'red',
           date: new Date(Date.now()).toLocaleString()
         },
         {
           title: 'Third Note',
           descr: 'Description for third note',
+          color: 'red',
           date: new Date(Date.now()).toLocaleString()
         }
       ]
@@ -135,7 +153,7 @@ export default {
   methods: {
     addNote() {
       // console.log(this.note)
-      let {title, descr} = this.note
+      let {title, descr, color} = this.note
 
       if (title === '') {
         this.message = 'title can`t be blank!'
@@ -145,6 +163,7 @@ export default {
       this.notes.push({
         title,
         descr,
+        color,
         date: new Date(Date.now()).toLocaleString()
       })
       this.message = null

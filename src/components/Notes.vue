@@ -5,6 +5,7 @@
       :class="{row: !grid}"
       v-for="(note, index) in notes"
       :key="index"
+      :style="{backgroundColor: note.color}"
     >
       <div class="note-header" :class="{row: !grid}">
         <p>{{ note.title }}</p>
@@ -50,9 +51,8 @@ export default {
   width: 48%;
   padding: 18px 20px;
   margin-bottom: 20px;
-  background-color: #fff;
   transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
-  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 
   &:hover {
     box-shadow: 0 30px 30px rgba(0, 0, 0, 0.04);
