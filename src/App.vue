@@ -115,19 +115,21 @@ export default {
         {
           title: 'First Note',
           descr: 'Description for first note',
-          color: 'red',
+          color: '#DFF8EB',
+          isImportant: true,
+          isDone: true,
           date: new Date(Date.now()).toLocaleString()
         },
         {
           title: 'Second Note',
           descr: 'Description for second note',
-          color: 'red',
+          color: '#B59DA4',
           date: new Date(Date.now()).toLocaleString()
         },
         {
           title: 'Third Note',
           descr: 'Description for third note',
-          color: 'red',
+          color: '#FFA8A9',
           date: new Date(Date.now()).toLocaleString()
         }
       ]
@@ -152,8 +154,8 @@ export default {
   },
   methods: {
     addNote() {
-      // console.log(this.note)
-      let {title, descr, color} = this.note
+      console.log(this.note)
+      let {title, descr, color, isImportant} = this.note
 
       if (title === '') {
         this.message = 'title can`t be blank!'
@@ -164,11 +166,15 @@ export default {
         title,
         descr,
         color,
+        isImportant,
         date: new Date(Date.now()).toLocaleString()
       })
       this.message = null
       this.note.title = ''
       this.note.descr = ''
+      this.note.color = '#fff'
+      this.note.isImportant = false
+      this.note.isDone = false
     },
     removeNote(index) {
       this.notes.splice(index, 1)

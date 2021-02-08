@@ -8,7 +8,13 @@
       :style="{backgroundColor: note.color}"
     >
       <div class="note-header" :class="{row: !grid}">
+        <div class="note-icons">
+          <p v-if="note.isImportant">❗</p>
+          <p v-if="note.isDone">✅</p>
+          <p v-else>❎</p>
+        </div>
         <p>{{ note.title }}</p>
+
         <p style="cursor: pointer;" @click="removeNote(index)">x</p>
       </div>
       <div class="note-body">
@@ -104,5 +110,8 @@ export default {
     font-size: 14px;
     color: #999;
   }
+}
+.note-icons {
+  display: flex;
 }
 </style>

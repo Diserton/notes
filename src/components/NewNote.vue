@@ -32,6 +32,15 @@
         :style="{backgroundColor: color}"
       ></label>
     </div>
+    <div>
+      Important
+      <input
+        type="checkbox"
+        name=""
+        id="isImportant"
+        v-model="note.isImportant"
+      />
+    </div>
 
     <button class="btn btnPrimary" @click="addNote">New note</button>
   </div>
@@ -58,9 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.active {
-  border: 2px solid #000;
-}
 input[type='radio'] {
   display: none;
 }
